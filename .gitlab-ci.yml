@@ -1,0 +1,17 @@
+.builder:
+  image: moby/buildkit:rootless
+  before_script:
+    - |
+      dockerbuild() {
+        buildctl-daemonless.sh build \
+          --frontend=dockerfile.v0 \
+          --local context=. \
+          --local dockerfile=$0.Dockerfile \
+          --output type=image,name=$CI_REGISTRY_IMAGE/$0:$1,push=true
+      }
+
+stages:
+  - build
+
+include:
+  - go-just.gitlab-ci.yml

@@ -1,0 +1,7 @@
+go-just:
+  image: moby/buildkit:rootless
+  rules: 
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      changes: [go-just.*]
+  script:
+    - dockerbuild go-just 1.23.5-1.39.0
