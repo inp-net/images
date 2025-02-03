@@ -5,7 +5,7 @@ go-just:
       changes: [go-just.*, .gitlab-ci.yml]
   script:
     # get build go version from FROM statement
-    - go_version=$(grep -Po '(?<=FROM golang:).*(?=-alpine)')
-    - just_version=$(grep -Po '(?<=--tag ).*$')
+    - go_version=$(grep -Eo 'FROM golang:.*(?=-alpine)' | sed 's/FROM golang://')
+    - just_version=$(grep -Eo '--tag .*$' | sed 's/--tag //')
     - echo Building image with Go $go_version and Just $just_version
     - dockerbuild go-just $go_version-$just_version
