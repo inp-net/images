@@ -6,6 +6,6 @@ go-just:
   script:
     # get build go version from FROM statement
     - grep -Eo 'FROM golang:.*' go-just.Dockerfile | sed 's/FROM golang://' | sed s/-alpine//
-    - grep -Eo '--tag .*$' go-just.Dockerfile | sed 's/--tag //'
+    - grep -Eo -- '--tag .*$' go-just.Dockerfile | sed 's/--tag //'
     - echo Building image with Go $go_version and Just $just_version
     - dockerbuild go-just $go_version-$just_version
