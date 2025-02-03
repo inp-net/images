@@ -2,7 +2,7 @@ go-just:
   extends: .builder
   rules: 
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      changes: [go-just.*]
+      changes: [go-just.*, .gitlab-ci.yml]
   script:
     # get build go version from FROM statement
     - go_version=$(grep -Eo '^(?<=FROM golang:).*(?=-alpine)$')

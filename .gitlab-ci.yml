@@ -3,6 +3,16 @@
   image: moby/buildkit:rootless
   before_script:
     - |
+      mkdir -p ~/.docker && cat > ~/.docker/config.json <<EOF
+      {
+        "auths": {
+          "$CI_REGISTRY": {
+            "auth": "$(echo -n "$CI_REGISTRY_USER:$CI_REGISTRY_PASSWORD" | base64)"
+          }
+        }
+      }
+      EOF
+    - |
       dockerbuild() {
         buildctl-daemonless.sh build \
           --frontend=dockerfile.v0 \
@@ -12,6 +22,7 @@
       }
 
 stages:
+  - version
   - build
 
 include:
