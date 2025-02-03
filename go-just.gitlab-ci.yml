@@ -1,5 +1,5 @@
 go-just:
-  image: moby/buildkit:rootless
+  extends: .builder
   rules: 
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       changes: [go-just.*]
