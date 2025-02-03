@@ -19,6 +19,7 @@
         buildctl-daemonless.sh build \
           --frontend=dockerfile.v0 \
           --local context=. \
+          --local dockerfile=$1.Dockerfile \
           --opt filename=$1.Dockerfile \
           --output type=image,name=$CI_REGISTRY_IMAGE/$1:$2,push=true
       }
