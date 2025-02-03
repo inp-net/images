@@ -3,6 +3,8 @@
   image: 
     name: moby/buildkit:rootless
     entrypoint: [sh, -c]
+  variables:
+    BUILDKITD_FLAGS: --oci-worker-no-process-sandbox
   before_script:
     - |
       mkdir -p ~/.docker && cat > ~/.docker/config.json <<EOF
