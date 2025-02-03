@@ -1,4 +1,4 @@
-FROM golang:1.23.5
+FROM golang:1.23.5-alpine
 
 RUN apk add curl bash
 
