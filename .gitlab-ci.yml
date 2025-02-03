@@ -1,6 +1,8 @@
 .builder:
   stage: build
-  image: moby/buildkit:rootless
+  image: 
+    name: moby/buildkit:rootless
+    entrypoint: [sh, -c]
   before_script:
     - |
       mkdir -p ~/.docker && cat > ~/.docker/config.json <<EOF
