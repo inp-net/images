@@ -2,5 +2,16 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "customManagers": [
+		{
+      "customType": "regex",
+      "fileMatch": ["go-just.Dockerfile"],
+      "matchStrings": [
+        "--tag (?<currentValue>[\\d.]+)"
+      ],
+      "depNameTemplate": "casey/just",
+      "datasourceTemplate": "github-tags"
+		}
   ]
 }
