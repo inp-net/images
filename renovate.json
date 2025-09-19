@@ -4,14 +4,16 @@
     "config:recommended"
   ],
   "customManagers": [
-		{
+    {
       "customType": "regex",
-      "fileMatch": ["go-just.Dockerfile"],
+      "managerFilePatterns": [
+        "/go-just.Dockerfile/"
+      ],
       "matchStrings": [
         "--tag (?<currentValue>[\\d.]+)"
       ],
       "depNameTemplate": "casey/just",
       "datasourceTemplate": "github-tags"
-		}
+    }
   ]
 }
