@@ -15,5 +15,11 @@
       "depNameTemplate": "casey/just",
       "datasourceTemplate": "github-tags"
     }
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["*"],
+      "automerge": true
+    }
   ]
 }
